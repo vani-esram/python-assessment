@@ -98,9 +98,14 @@ class itemlistResource(Resource):
         return [item.to_dist() for item in items], 200
 
 
+@app.route("/", methods=["GET"])
+def hello():
+    return "Hello"
+
+
 api.add_resource(ItemResource, '/Stem/<int:id>')
 api.add_resource(itemlistResource, '/Stem')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
